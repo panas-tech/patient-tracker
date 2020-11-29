@@ -10,6 +10,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
+    "firebase": "^8.1.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
@@ -17,6 +18,9 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "dev": "run-p --race dev:firebase dev:react",
+    "dev:firebase": "firebase emulators:start",
+    "dev:react": "yarn start",
     "build:tailwind": "tailwindcss build src/styles/tailwind.css -o src/styles/index.css",
     "prestart": "npm run build:tailwind",
     "prebuild": "npm run build:tailwind",
@@ -49,6 +53,7 @@
     "autoprefixer": "^10.0.4",
     "husky": "^4.3.0",
     "lint-staged": "^10.5.2",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.1.10",
     "prettier": "^2.2.1",
     "tailwindcss": "^2.0.1"
