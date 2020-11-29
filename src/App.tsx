@@ -1,15 +1,7 @@
-import {useEffect} from 'react'
-import {db} from './firebase'
 import logo from './logo.svg'
 import './styles/index.css'
 
 function App() {
-  useEffect(() => {
-    db.collection('test').add({
-      works: true,
-    })
-  }, [])
-
   return (
     <div className="bg-gray-700">
       <header className="min-h-screen flex flex-col items-center justify-center text-white">
