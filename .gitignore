@@ -24,3 +24,5 @@ yarn-error.log*
 
 # debug files from firebase
 *-debug.log
+
+.eslintcache
