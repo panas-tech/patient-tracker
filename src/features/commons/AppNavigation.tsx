@@ -4,28 +4,28 @@ export function AppNavigation() {
   return (
     <div className="grid">
       <div className="h-44 flex flex-wrap content-center justify-center align-middle">
-        User Profile
+        Perfil
       </div>
       <NavLink
         to="/"
         exact={true}
-        className="pl-4 pt-2"
+        className=" pl-4 pt-2"
         activeClassName="font-bold"
       >
-        Home
+        Inicio
       </NavLink>
       <NavLink
         to="/appointments"
         className="pl-4 pt-2"
         activeClassName="font-bold"
       >
-        Appointments
+        Citas
       </NavLink>
       <NavLink to="/doctors" className="pl-4 pt-2" activeClassName="font-bold">
-        Doctors
+        Doctores
       </NavLink>
       <NavLink to="/patients" className="pl-4 pt-2" activeClassName="font-bold">
-        Patients
+        Pacientes
       </NavLink>
     </div>
   )
