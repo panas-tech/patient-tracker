@@ -1,4 +1,3 @@
-import './styles/index.css'
 import { AppNavigation } from './features/commons/AppNavigation'
 import { AppRoutes } from './features/commons/AppRoutes'
 
