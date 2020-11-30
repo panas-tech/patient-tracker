@@ -1,3 +1,8 @@
-export function DoctorDetails(){
-    return (<> <h1>DOCTOR DETAILS</h1> </>)
+export function DoctorDetails() {
+  return (
+    <>
+      {' '}
+      <h1>DOCTOR DETAILS</h1>{' '}
+    </>
+  )
 }

@@ -1,3 +1,7 @@
-export function AppointmentDetail(){
-    return (<> <h1>APPOINTMENT DETAILS</h1> </>)
+export function AppointmentDetail() {
+  return (
+    <>
+      <h1>APPOINTMENT DETAILS</h1>
+    </>
+  )
 }

@@ -1,7 +1,6 @@
-import { BrowserRouter } from 'react-router-dom'
-import { AppNavigation } from './features/commons/AppNavigation'
-import { AppRoutes } from './features/commons/AppRoutes'
-
+import {BrowserRouter} from 'react-router-dom'
+import {AppNavigation} from './features/commons/AppNavigation'
+import {AppRoutes} from './features/commons/AppRoutes'
 
 function App() {
   return (
