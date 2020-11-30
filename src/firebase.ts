@@ -16,7 +16,7 @@ firebase.initializeApp({
 export const db = firebase.firestore()
 export const auth = firebase.auth()
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development' || process.env.CI) {
   db.useEmulator('localhost', 8080)
   auth.useEmulator('http://localhost:9099/')
 }
