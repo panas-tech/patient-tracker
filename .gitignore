@@ -22,8 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# tailwind generated styles, we don't have to do commit this
-src/styles/index.css
-
 # debug files from firebase
 *-debug.log
