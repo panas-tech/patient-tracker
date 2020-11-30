@@ -1,9 +1,3 @@
-type Props = {
-    className?: string
-}
-
-const PatientDetails: React.FC<Props> = () => {
+export function PatientDetails(){
     return (<> <h1>PATIENT DETAILS</h1> </>)
 }
-
-export { PatientDetails }

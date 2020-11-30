@@ -1,10 +1,6 @@
 import { NavLink } from 'react-router-dom'
 
-type Props = {
-    className?: string
-}
-
-const AppNavigation: React.FC<Props> = () => {
+export function AppNavigation() {
     return (
         <div className="grid">
             <div className="h-44 flex flex-wrap content-center justify-center align-middle">
@@ -16,5 +12,3 @@ const AppNavigation: React.FC<Props> = () => {
             <NavLink to="/patients" className="pl-4 pt-2" activeClassName="font-bold">Patients</NavLink>
         </div>)
 }
-
-export { AppNavigation }

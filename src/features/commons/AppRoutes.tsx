@@ -4,12 +4,9 @@ import { DoctorList } from '../doctors/DoctorList'
 import { Home } from '../home/Home'
 import { PatientList } from '../patients/PatientList'
 
-type Props = {
-    className?: string
-}
-
-const AppRoutes: React.FC<Props> = () => {
-    return (<>
+export function AppRoutes() {
+    return (
+    <>
             <Switch>
                 <Route path="/appointments"> <AppointmentList /> </Route>
                 <Route path="/doctors"> <DoctorList /> </Route>
@@ -18,5 +15,3 @@ const AppRoutes: React.FC<Props> = () => {
             </Switch>
     </>)
 }
-
-export { AppRoutes }
