@@ -1,7 +1,7 @@
 import {useEffect} from 'react'
 import {useForm} from 'react-hook-form'
 import {useHistory} from 'react-router-dom'
-import {auth} from '../../firebase'
+import {useAuth} from './AuthProvider'
 
 interface SignInFormValues {
   email: string
@@ -9,16 +9,17 @@ interface SignInFormValues {
 }
 
 export function SignInPage() {
+  const {signIn, user} = useAuth()
   const {register, handleSubmit} = useForm<SignInFormValues>()
   const history = useHistory()
 
   useEffect(() => {
-    if (auth.currentUser) history.replace('/')
+    if (user) history.replace('/')
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [auth.currentUser])
+  }, [user])
 
   async function onSubmit({email, password}: SignInFormValues) {
-    await auth.signInWithEmailAndPassword(email, password)
+    await signIn(email, password)
   }
 
   return (
@@ -49,7 +50,10 @@ export function SignInPage() {
                 type="password"
               />
             </label>
-            <button className="rounded font-light bg-blue-600 w-full py-2 mt-8 text-white shadow focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+            <button
+              type="submit"
+              className="rounded font-light bg-blue-600 w-full py-2 mt-8 text-white shadow focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            >
               Iniciar Sessión
             </button>
           </form>
