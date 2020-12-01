@@ -1,13 +1,12 @@
 import {RouteProps, Route, Redirect} from 'react-router-dom'
-import {auth} from '../../firebase'
+import {useAuth} from '../auth/AuthProvider'
 
 export function ProtectedRoute({children, ...rest}: RouteProps) {
-  const {currentUser} = auth
-
+  const {user} = useAuth()
   return (
     <Route
       {...rest}
-      render={() => (currentUser ? children : <Redirect to="/login" />)}
+      render={() => (user ? children : <Redirect to="/login" />)}
     />
   )
 }
