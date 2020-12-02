@@ -5,6 +5,7 @@ type User = typeof auth.currentUser
 
 interface Auth {
   signIn(email: string, password: string): Promise<User>
+  signOut(): void
   user: User
   loading: boolean
 }
@@ -20,6 +21,8 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
     setUser(user)
     return user
   }
+
+  const signOut = async () => await auth.signOut()
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -38,6 +41,7 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
     <AuthContext.Provider
       value={{
         signIn,
+        signOut,
         loading,
         user,
       }}
