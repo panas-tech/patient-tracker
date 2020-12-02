@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* fixes webkit overflows when using 100vh */
+/* source https://allthingssmitty.com/2020/05/11/css-fix-for-100vh-in-mobile-webkit/ */
+.min-h-screen {
+  min-height: 100vh;
+  /* mobile viewport bug fix */
+  min-height: -webkit-fill-available;
+}
