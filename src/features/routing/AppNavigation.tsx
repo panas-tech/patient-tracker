@@ -40,6 +40,7 @@ export function AppNavigation() {
         </NavLink>
       </div>
       <button
+        data-test-id="signout"
         className="p-2 w-full rounded hover:bg-gray-200 flex items-center"
         onClick={signOut}
       >
