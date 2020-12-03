@@ -26,15 +26,14 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "dev:firebase": "firebase emulators:start",
-    "dev:react": "yarn start",
-    "dev": "run-p --race dev:firebase dev:react",
+    "dev": "firebase emulators:exec 'node ./scripts/seed-admin.js && yarn start' --ui",
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md,mdx}\"",
-    "cypress": "cypress open"
+    "e2e:emulators": "firebase emulators:exec 'node ./scripts/seed-admin.js && yarn cypress run'",
+    "e2e": "run-p --race start e2e:emulators"
   },
   "eslintConfig": {
     "extends": [
