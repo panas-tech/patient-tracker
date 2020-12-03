@@ -43,3 +43,23 @@ jobs:
           yarn test
         env:
           CI: true
+
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      
+      - name: Setup Node.js 12.x
+        uses: actions/setup-node@main
+        with:
+          node-version: 12.x
+      
+      - name: Install
+        run: yarn
+
+      # TODO: optimize e2e for ci with parallel tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v2.6.1
+        with:
+          command: yarn e2e
