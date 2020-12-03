@@ -17,7 +17,7 @@
 import './commands'
 
 Cypress.Commands.add('login', () => {
-  cy.visit('http://localhost:3000/login')
+  cy.visit('/login')
   cy.get('input[name="email"]').type('admin@email.com')
   cy.get('input[name="password"]').type('password')
   cy.get('button').click()
