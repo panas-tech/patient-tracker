@@ -31,9 +31,7 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md,mdx}\"",
-    "e2e:emulators": "firebase emulators:exec 'node ./scripts/seed-admin.js && yarn cypress run'",
-    "e2e": "run-p --race start e2e:emulators"
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md,mdx}\""
   },
   "eslintConfig": {
     "extends": [

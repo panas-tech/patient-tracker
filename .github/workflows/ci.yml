@@ -44,24 +44,23 @@ jobs:
         env:
           CI: true
 
-  # # TODO: fix eet
-  # e2e:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout Repo
-  #       uses: actions/checkout@v2
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
       
-  #     - name: Setup Node.js 12.x
-  #       uses: actions/setup-node@main
-  #       with:
-  #         node-version: 12.x
+      - name: Setup Node.js 12.x
+        uses: actions/setup-node@main
+        with:
+          node-version: 12.x
       
-  #     - name: Install
-  #       run: |
-  #         yarn global add firebase-tools
-  #         yarn
+      - name: Install
+        run: |
+          yarn global add firebase-tools
+          yarn
 
-  #     - name: Cypress run
-  #       uses: cypress-io/github-action@v2.6.1
-  #       with:
-  #         command: yarn e2e
+      - name: Cypress run
+        uses: cypress-io/github-action@v2.6.1
+        with:
+          start: yarn dev
