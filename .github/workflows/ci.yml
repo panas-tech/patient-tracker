@@ -1,4 +1,4 @@
-name: PR
+name: CI
 on: pull_request
 jobs:
   build_and_deploy:
@@ -63,4 +63,5 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2.6.1
         with:
-          start: yarn dev
+          start: yarn emulators:start
+          wait-on: 'http://localhost:3000'
