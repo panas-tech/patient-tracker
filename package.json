@@ -27,7 +27,7 @@
   },
   "scripts": {
     "e2e:build-functions": "cd functions && npm install && npm run build && cd ../",
-    "emulators:start": "yarn emulators:build-functions && firebase emulators:exec 'node ./scripts/seed-admin.js && yarn start'",
+    "emulators:start": "firebase emulators:exec 'node ./scripts/seed-admin.js && yarn start'",
     "dev": "yarn emulators:start --ui",
     "start": "craco start",
     "build": "craco build",

@@ -58,7 +58,7 @@ jobs:
       - name: Install
         run: |
           yarn global add firebase-tools
-          yarn emulators:build-functions
+          yarn e2e:build-functions
           yarn
 
       - name: Cypress run
