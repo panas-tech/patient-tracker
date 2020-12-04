@@ -42,10 +42,7 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
   const signIn = (email: string, password: string) =>
     auth.signInWithEmailAndPassword(email, password)
 
-  const signOut = async () => {
-    console.log('?')
-    await auth.signOut()
-  }
+  const signOut = () => auth.signOut()
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
