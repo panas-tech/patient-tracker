@@ -1,37 +1,59 @@
-import {createContext, useContext, useEffect, useState} from 'react'
+import {createContext, useContext, useEffect, useReducer} from 'react'
 import {auth} from '../../firebase'
 
 type User = typeof auth.currentUser
 
 interface Auth {
-  signIn(email: string, password: string): Promise<User>
+  signIn(email: string, password: string): void
   signOut(): void
   user: User
   loading: boolean
+  status: 'loading' | 'signedIn' | 'signedOut'
 }
 
 const AuthContext = createContext<Auth>((undefined as unknown) as Auth)
 
-export function AuthProvider({children}: {children: React.ReactNode}) {
-  const [loading, setLoading] = useState(true)
-  const [user, setUser] = useState<User>(null)
+type Action = {type: 'signIn'; payload: User} | {type: 'signOut'}
 
-  async function signIn(email: string, password: string) {
-    const {user} = await auth.signInWithEmailAndPassword(email, password)
-    setUser(user)
-    return user
+type State = {
+  status: 'loading' | 'signedIn' | 'signedOut'
+  user: User
+}
+
+const initialState = {
+  status: 'loading' as const,
+  user: null,
+}
+
+function reducer(state: State, action: Action): State {
+  switch (action.type) {
+    case 'signIn':
+      return {status: 'signedIn', user: action.payload}
+    case 'signOut':
+      return {...state, status: 'signedOut'}
+    default:
+      return state
   }
+}
 
-  const signOut = async () => await auth.signOut()
+export function AuthProvider({children}: {children: React.ReactNode}) {
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  const signIn = (email: string, password: string) =>
+    auth.signInWithEmailAndPassword(email, password)
+
+  const signOut = async () => {
+    console.log('?')
+    await auth.signOut()
+  }
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        setUser(user)
+        dispatch({type: 'signIn', payload: user})
       } else {
-        setUser(null)
+        dispatch({type: 'signOut'})
       }
-      setLoading(false)
     })
 
     return () => unsubscribe()
@@ -40,10 +62,11 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
   return (
     <AuthContext.Provider
       value={{
+        status: state.status,
         signIn,
         signOut,
-        loading,
-        user,
+        loading: state.status === 'loading',
+        user: state.user,
       }}
     >
       {children}
