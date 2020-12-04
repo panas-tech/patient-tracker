@@ -20,7 +20,7 @@ describe('Auth flow', () => {
 
   it('clicking logout should log the user out', () => {
     cy.login()
-      .get('[data-test-id="signout"]')
+      .get('[data-testid="signout"]')
       .click()
       .url()
       .should('eq', 'http://localhost:3000/login')
