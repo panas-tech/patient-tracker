@@ -7,6 +7,7 @@ export enum DiagnosticColor {
 }
 
 export interface Diagnostic {
+  id: string
   name: string
   color: DiagnosticColor
 }
