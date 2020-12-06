@@ -49,20 +49,22 @@ export function DiagnosticForm({
         <span className="text-gray-700">Color</span>
         <div className="grid gap-2 sm:gap-4 grid-flow-col mt-1">
           {Object.values(DiagnosticColor).map((diagnosticColor) => (
-            <input
-              ref={register}
-              type="radio"
-              name="color"
-              value={diagnosticColor}
-              key={diagnosticColor}
-              className={clsx(
-                'h-10 w-full rounded transform translate-y-1 shadow-sm transition-all cursor-pointer opacity-50',
-                'focus:ring focus:ring-indigo-200 focus:ring-opacity-50',
-                diagnosticColor === color &&
-                  '-translate-y-1 opacity-100 shadow-md',
-                enumToColor(diagnosticColor)
-              )}
-            />
+            <label key={diagnosticColor}>
+              <input
+                ref={register}
+                type="radio"
+                name="color"
+                value={diagnosticColor}
+                className={clsx(
+                  'h-10 w-full rounded transform translate-y-1 shadow-sm transition-all cursor-pointer opacity-50',
+                  'focus:ring focus:ring-indigo-200 focus:ring-opacity-50',
+                  diagnosticColor === color &&
+                    '-translate-y-1 opacity-100 shadow-md',
+                  enumToColor(diagnosticColor)
+                )}
+              />
+              <span className="sr-only">{diagnosticColor}</span>
+            </label>
           ))}
         </div>
       </label>
