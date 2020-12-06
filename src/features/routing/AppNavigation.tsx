@@ -4,7 +4,7 @@ import {useAuth} from '../auth/AuthProvider'
 export function AppNavigation() {
   const {signOut} = useAuth()
   return (
-    <div className="flex flex-col justify-between items-center h-full p-4">
+    <div className="hidden sm:flex bg-white flex-col justify-between items-center h-full p-4">
       <div className="flex flex-col">
         <div className="h-44 flex flex-wrap content-center justify-center align-middle">
           User Profile
@@ -37,6 +37,13 @@ export function AppNavigation() {
           activeClassName="font-bold"
         >
           Patients
+        </NavLink>
+        <NavLink
+          to="/diagnostics"
+          className="pl-4 pt-2"
+          activeClassName="font-bold"
+        >
+          Diagnósticos
         </NavLink>
       </div>
       <button
