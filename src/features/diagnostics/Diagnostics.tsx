@@ -6,11 +6,20 @@ import {Diagnostic} from './types'
 import {enumToColor} from './utils'
 
 export function Diagnostics() {
-  const [diagnoses, setDiagnoses] = useState<Diagnostic[]>([])
+  const [diagnosticList, setDiagnosticList] = useState<Diagnostic[]>([])
 
   useEffect(() => {
     const unsubscribe = db.collection('diagnostics').onSnapshot((snapshot) => {
-      setDiagnoses(snapshot.docs.map((doc) => doc.data() as any))
+      setDiagnosticList(
+        snapshot.docs.map((doc) => {
+          const data = doc.data()
+          return {
+            id: doc.id,
+            name: data.name,
+            color: data.color,
+          }
+        })
+      )
     })
 
     return () => unsubscribe()
@@ -23,7 +32,7 @@ export function Diagnostics() {
         <DiagnosticForm />
       </div>
       <ul className="grid grid-flow-row sm:grid-cols-2 md:grid-cols-3 gap-8 py-8">
-        {diagnoses.map((diagnostic) => (
+        {diagnosticList.map((diagnostic) => (
           <li
             className="border bg-white rounded-xl shadow overflow-hidden"
             key={diagnostic.name}
