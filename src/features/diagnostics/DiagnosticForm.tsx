@@ -10,7 +10,7 @@ import {enumToColor} from './utils'
 export function DiagnosticForm({
   defaultValues = {name: '', color: DiagnosticColor.BLACK},
 }: {
-  defaultValues?: Diagnostic
+  defaultValues?: Partial<Diagnostic>
 }) {
   const [submitting, setSubmitting] = useState(false)
   const {register, handleSubmit, watch, reset, errors} = useForm<Diagnostic>({
