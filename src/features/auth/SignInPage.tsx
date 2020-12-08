@@ -52,7 +52,7 @@ export function SignInPage() {
               />
             </label>
             <Button className="mt-8" type="submit">
-              Iniciar Sessión
+              Iniciar Sesión
             </Button>
           </form>
         </div>

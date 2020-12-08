@@ -8,7 +8,7 @@ import {useModal} from '../../components/modal/Modal'
 import clsx from 'clsx'
 
 export function PatientForm() {
-  const [, setModalDisplayed] = useModal()
+  const {close} = useModal()
   const [submitting, setSubmitting] = useState(false)
   const {register, handleSubmit, reset, errors} = useForm<Patient>()
   async function onSubmit(patient: Patient) {
@@ -16,7 +16,7 @@ export function PatientForm() {
     await db.collection('patients').add(patient)
     setSubmitting(false)
     reset()
-    setModalDisplayed(false)
+    close()
   }
   return (
     <form

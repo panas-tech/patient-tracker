@@ -3,7 +3,7 @@ import {Modal, ModalHeader, useModal} from '../../components/modal/Modal'
 import {PatientForm} from './PatientForm'
 
 export function PatientList() {
-  const [, setModalDisplayed] = useModal()
+  const {open} = useModal()
   return (
     <>
       <div className="h-screen py-8 overflow-hidden overflow-y-scroll">
@@ -15,7 +15,7 @@ export function PatientList() {
             <Button
               className="h-8"
               onClick={() => {
-                setModalDisplayed(true)
+                open()
               }}
             >
               New
@@ -29,7 +29,7 @@ export function PatientList() {
         </div>
       </div>
       <Modal>
-        <ModalHeader />
+        <ModalHeader title="Nuevo Paciente" />
         <PatientForm />
       </Modal>
     </>
