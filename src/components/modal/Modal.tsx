@@ -1,8 +1,3 @@
-// interface ModalCustomProps {
-//   title: string
-//   onClose: () => void
-// }
-
 import React, {Dispatch, SetStateAction} from 'react'
 
 type ModalContextType = [boolean, Dispatch<SetStateAction<boolean>>]
@@ -35,7 +30,7 @@ export function Modal({
 }
 
 export function ModalHeader() {
-  const [isDisplayed, setDisplayed] = useModal()
+  const [, setDisplayed] = useModal()
   return (
     <div className="flex justify-between items-center pb-3">
       <h2 className="text-2xl font-bold">Titulo</h2>
