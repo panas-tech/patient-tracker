@@ -1,26 +1,28 @@
 import React from 'react'
 
-type ModalContextType = {isOpen:boolean, open:()=>void, close:()=>void}
+type ModalContextType = {isOpen: boolean; open: () => void; close: () => void}
 
 const ModalContext = React.createContext<ModalContextType>(
   (undefined as unknown) as ModalContextType
 )
 
-export function ModalProvider({
-  children,
-}: { children: React.ReactNode }) {
+export function ModalProvider({children}: {children: React.ReactNode}) {
   const [isOpen, setIsOpen] = React.useState(false)
   const open = () => setIsOpen(true)
   const close = () => setIsOpen(false)
-  return <ModalContext.Provider value={{isOpen, open, close}}>{children}</ModalContext.Provider>
+  return (
+    <ModalContext.Provider value={{isOpen, open, close}}>
+      {children}
+    </ModalContext.Provider>
+  )
 }
 
 export function Modal({children}: {children: React.ReactNode}) {
   const {isOpen} = useModal()
   return isOpen ? (
     <div className="fixed w-full h-full top-0 left-0 flex items-center justify-center">
-      <div className="absolute w-full h-full bg-gray-900 opacity-50"></div>
-      <div className="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+      <div className="absolute w-full h-full bg-gray-900 opacity-50" />
+      <div className="bg-white w-11/12 max-w-screen-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
         <div className="py-4 text-left px-6">{children}</div>
       </div>
     </div>
@@ -32,10 +34,7 @@ export function ModalHeader({title}: {title: string}) {
   return (
     <div className="flex justify-between items-center pb-3">
       <h1 className="text-2xl font-bold">{title}</h1>
-      <button
-        className="cursor-pointer z-50"
-        onClick={() => close()}
-      >
+      <button className="cursor-pointer z-50" onClick={() => close()}>
         <svg
           className="fill-current text-black"
           width="18"

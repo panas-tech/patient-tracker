@@ -6,6 +6,7 @@ import {useForm} from 'react-hook-form'
 import {db} from '../../firebase'
 import {useModal} from '../../components/modal/Modal'
 import clsx from 'clsx'
+import { Select } from '../../components/Select';
 
 export function PatientForm() {
   const {close} = useModal()
@@ -78,15 +79,15 @@ export function PatientForm() {
       </label>
       <label className="block col-span-2 mt-2 ml-2">
         <span className="text-gray-700">Nacionalidad</span>
-        <select
+        <Select
           ref={register()}
           name="nationality"
           className="mt-1 block w-full "
         >
           {Object.values(Nationality).map((nationality) => (
-            <option value={nationality}>{nationality}</option>
+            <option key={nationality} value={nationality}>{nationality}</option>
           ))}
-        </select>
+        </Select>
       </label>
       <label className="mt-1 block col-span-2 mt-2 mr-2">
         <span className="text-gray-700">Identificacion</span>
@@ -107,11 +108,11 @@ export function PatientForm() {
       </label>
       <label className="mt-1 block col-span-2 mt-2 ml-2">
         <span className="text-gray-700">Sexo</span>
-        <select name="gender" className="mt-1 block w-full " ref={register()}>
+        <Select name="gender" className="mt-1 block w-full " ref={register()}>
           {Object.values(Gender).map((gender) => (
-            <option value={gender}>{gender}</option>
+            <option key={gender} value={gender}>{gender}</option>
           ))}
-        </select>
+        </Select>
       </label>
       <label className="mt-1 block col-span-2 mt-2 mr-2">
         <span className="text-gray-700">Email</span>
