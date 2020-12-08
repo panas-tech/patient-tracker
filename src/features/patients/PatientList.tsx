@@ -1,12 +1,9 @@
 import {Button} from '../../components/Button'
-import {EmptyPatientsView} from './EmptyPatientView'
-import {useState} from 'react'
-import {Modal} from '../../components/Modal'
-import {Input} from '../../components/Input'
+import {Modal, ModalHeader, useModal} from '../../components/modal/Modal'
 import {PatientForm} from './PatientForm'
 
 export function PatientList() {
-  const [isAddingPatient, setAddingPatient] = useState<Boolean>()
+  const [, setModalDisplayed] = useModal()
   return (
     <>
       <div className="h-screen py-8 overflow-hidden overflow-y-scroll">
@@ -18,7 +15,7 @@ export function PatientList() {
             <Button
               className="h-8"
               onClick={() => {
-                setAddingPatient(true)
+                setModalDisplayed(true)
               }}
             >
               New
@@ -26,20 +23,15 @@ export function PatientList() {
           </div>
         </div>
         <div className="w-full bg-white rounded-2xl p-8 shadow mt-4 flex">
-          <EmptyPatientsView />
+          <div className="flex flex-wrap content-center justify-center h-full w-full">
+            No hay pacientes registrados en este momento
+          </div>
         </div>
       </div>
-      {isAddingPatient ? (
-        <Modal
-          title="Nuevo Paciente"
-          onClose={() => {
-            console.log('Close Modal')
-            setAddingPatient(false)
-          }}
-        >
-          <PatientForm />
-        </Modal>
-      ) : null}
+      <Modal>
+        <ModalHeader />
+        <PatientForm />
+      </Modal>
     </>
   )
 }

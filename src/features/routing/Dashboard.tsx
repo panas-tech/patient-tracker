@@ -5,6 +5,7 @@ import {DoctorList} from '../doctors/DoctorList'
 import {Home} from '../home/Home'
 import {PatientList} from '../patients/PatientList'
 import {AppNavigation} from './AppNavigation'
+import {ModalProvider} from '../../components/modal/Modal'
 
 export function Dashboard() {
   return (
@@ -19,7 +20,9 @@ export function Dashboard() {
             <DoctorList />
           </Route>
           <Route path="/patients">
-            <PatientList />
+            <ModalProvider>
+              <PatientList />
+            </ModalProvider>
           </Route>
           <Route path="/diagnostics">
             <Diagnostics />
