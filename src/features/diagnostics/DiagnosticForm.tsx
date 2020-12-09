@@ -68,7 +68,10 @@ export function DiagnosticForm({
           ))}
         </div>
       </label>
-      <Button disabled={Boolean(submitting || errors.name || !name)}>
+      <Button
+        className="mt-8"
+        disabled={Boolean(submitting || errors.name || !name)}
+      >
         {submitting ? (
           <svg className="animate-spin mr-3 h-5 w-5 text-white">
             <circle

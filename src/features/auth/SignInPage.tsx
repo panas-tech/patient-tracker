@@ -51,7 +51,9 @@ export function SignInPage() {
                 type="password"
               />
             </label>
-            <Button type="submit">Iniciar Sessión</Button>
+            <Button className="mt-8" type="submit">
+              Iniciar Sesión
+            </Button>
           </form>
         </div>
       </div>
