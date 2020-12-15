@@ -37,18 +37,30 @@ export function PatientList() {
   return (
     <>
       <div className="h-screen py-8 overflow-hidden overflow-y-scroll">
-        <div className="grid grid-cols-10">
-          <div className="flex flex-wrap content-center col-span-9">
+        <div className="grid grid-cols-12">
+          <div className="flex flex-wrap content-center col-span-11">
             <h1 className="text-3xl font-bold">Pacientes</h1>
           </div>
           <div className="flex flex-wrap content-center col-span-1">
             <Button
-              className="h-8"
               onClick={() => {
                 open()
               }}
             >
-              New
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="text-white h-6 w-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
             </Button>
           </div>
         </div>
