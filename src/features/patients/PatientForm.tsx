@@ -6,7 +6,7 @@ import {useForm} from 'react-hook-form'
 import {db} from '../../firebase'
 import {useModal} from '../../components/modal/Modal'
 import clsx from 'clsx'
-import { Select } from '../../components/Select';
+import {Select} from '../../components/Select'
 
 export function PatientForm() {
   const {close} = useModal()
@@ -85,7 +85,9 @@ export function PatientForm() {
           className="mt-1 block w-full "
         >
           {Object.values(Nationality).map((nationality) => (
-            <option key={nationality} value={nationality}>{nationality}</option>
+            <option key={nationality} value={nationality}>
+              {nationality}
+            </option>
           ))}
         </Select>
       </label>
@@ -110,7 +112,9 @@ export function PatientForm() {
         <span className="text-gray-700">Sexo</span>
         <Select name="gender" className="mt-1 block w-full " ref={register()}>
           {Object.values(Gender).map((gender) => (
-            <option key={gender} value={gender}>{gender}</option>
+            <option key={gender} value={gender}>
+              {gender}
+            </option>
           ))}
         </Select>
       </label>
