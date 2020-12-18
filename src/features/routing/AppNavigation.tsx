@@ -30,7 +30,7 @@ export function AppNavigation() {
           leave="transition-opacity ease-linear duration-300"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
-          className="md:hidden fixed w-full h-full top-0 left-0"
+          className="sm:hidden fixed w-full h-full top-0 left-0"
         >
           <div className="absolute w-full h-full bg-gray-900 opacity-75" />
         </Transition.Child>
@@ -42,7 +42,7 @@ export function AppNavigation() {
           leave="transition ease-in-out duration-300 transform"
           leaveFrom="translate-x-0"
           leaveTo="-translate-x-full"
-          className="md:hidden h-full w-screen z-10 fixed top-0 left-0 flex items-start"
+          className="sm:hidden h-full w-screen z-10 fixed top-0 left-0 flex items-start"
         >
           <Sidebar />
           <button
@@ -66,8 +66,8 @@ export function AppNavigation() {
           </button>
         </Transition.Child>
       </Transition>
-      <nav className="flex md:flex-col md:h-full w-screen md:w-auto p-4 md:p-0 bg-white">
-        <div className="flex justify-between items-center w-full md:hidden">
+      <nav className="flex sm:flex-col sm:h-full w-screen sm:w-auto p-4 sm:p-0 bg-white">
+        <div className="flex justify-between items-center w-full sm:hidden">
           <div>Logo</div>
           <button onClick={() => setIsOpen(true)}>
             <svg
@@ -86,7 +86,7 @@ export function AppNavigation() {
             </svg>
           </button>
         </div>
-        <div className="hidden md:block h-full w-96">
+        <div className="hidden sm:block h-full w-64">
           <Sidebar />
         </div>
       </nav>

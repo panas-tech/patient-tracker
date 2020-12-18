@@ -5,7 +5,7 @@ export function Sidebar() {
   const {signOut} = useAuth()
 
   return (
-    <aside className="bg-gray-200 flex flex-col h-screen md:h-full items-center justify-between w-full">
+    <aside className="bg-white sm:bg-gray-200 flex flex-col h-screen sm:h-full items-center justify-between w-full">
       <div className="flex flex-col w-full p-4 space-y-2">
         <div>Patient Tracker</div>
         <NavLink to="/" exact={true}>
