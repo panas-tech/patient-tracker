@@ -1,9 +1,23 @@
-import {useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import {Transition} from '@headlessui/react'
 import {Sidebar} from './Sidebar'
+import {useLocation} from 'react-router-dom'
 
 export function AppNavigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const ref = useRef<string>()
+  const location = useLocation()
+
+  useEffect(() => {
+    // if location changes and the sidebar is open, close it
+    if (ref.current && ref.current !== location.pathname && isOpen)
+      setIsOpen(false)
+  }, [location.pathname, isOpen])
+
+  // keep track of the location
+  useEffect(() => {
+    ref.current = location.pathname
+  }, [location.pathname])
 
   return (
     <>
