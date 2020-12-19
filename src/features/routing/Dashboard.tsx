@@ -9,7 +9,7 @@ import {ModalProvider} from '../../components/modal/Modal'
 
 export function Dashboard() {
   return (
-    <div className="flex bg-gray-100 h-screen">
+    <div className="flex flex-col sm:flex-row bg-gray-100 h-screen">
       <AppNavigation />
       <div className="w-full mx-auto px-4 max-w-screen-lg">
         <Switch>
