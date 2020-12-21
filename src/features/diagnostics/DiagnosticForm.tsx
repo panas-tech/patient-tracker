@@ -6,12 +6,14 @@ import {Input} from '../../components/Input'
 import {db} from '../../firebase'
 import {Diagnostic, DiagnosticColor} from './types'
 import {enumToColor} from './utils'
+import {useModal} from '../../components/modal/Modal'
 
 export function DiagnosticForm({
   defaultValues = {name: '', color: DiagnosticColor.BLACK},
 }: {
   defaultValues?: Partial<Diagnostic>
 }) {
+  const {close} = useModal()
   const [submitting, setSubmitting] = useState(false)
   const {register, handleSubmit, watch, reset, errors} = useForm<Diagnostic>({
     defaultValues,
@@ -22,6 +24,7 @@ export function DiagnosticForm({
     await db.collection('diagnostics').add(diagnostic)
     setSubmitting(false)
     reset()
+    close()
   }
 
   return (
