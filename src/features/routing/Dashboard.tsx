@@ -25,9 +25,7 @@ export function Dashboard() {
             </ModalProvider>
           </Route>
           <Route path="/diagnostics">
-            <ModalProvider>
-              <Diagnostics />
-            </ModalProvider>
+            <Diagnostics />
           </Route>
           <Route exact path="/">
             <Home />
