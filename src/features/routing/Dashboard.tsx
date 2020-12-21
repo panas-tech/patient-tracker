@@ -17,7 +17,9 @@ export function Dashboard() {
             <AppointmentList />
           </Route>
           <Route path="/doctors">
-            <DoctorList />
+            <ModalProvider>
+              <DoctorList />
+            </ModalProvider>
           </Route>
           <Route path="/patients">
             <ModalProvider>
