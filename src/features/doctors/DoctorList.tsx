@@ -14,19 +14,18 @@ export function DoctorList() {
   useEffect(() => {
     const unsubscribe = db.collection('doctors').onSnapshot((snapshot) => {
       setDoctorList(
-        snapshot.docs
-          .map((doc) => {
-            const data = doc.data()
-            return {
-              id: doc.id,
-              firstName: data.firstName,
-              lastName: data.lastName,
-              phoneNumber: data.phoneNumber,
-              specialty: data.specialty,
-              identification: data.identification,
-              email: data.email,
-            }
-          })
+        snapshot.docs.map((doc) => {
+          const data = doc.data()
+          return {
+            id: doc.id,
+            firstName: data.firstName,
+            lastName: data.lastName,
+            phoneNumber: data.phoneNumber,
+            specialty: data.specialty,
+            identification: data.identification,
+            email: data.email,
+          }
+        })
       )
     })
 

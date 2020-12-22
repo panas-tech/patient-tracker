@@ -13,22 +13,21 @@ export function PatientList() {
   useEffect(() => {
     const unsubscribe = db.collection('patients').onSnapshot((snapshot) => {
       setPatientList(
-        snapshot.docs
-          .map((doc) => {
-            const data = doc.data()
-            return {
-              id: doc.id,
-              firstName: data.firstName,
-              lastName: data.lastName,
-              nationality: data.nationality,
-              dateOfBirth: data.dateOfBirth,
-              gender: data.gender,
-              identification: data.identification,
-              email: data.email,
-              address: data.address,
-              phoneNumber: data.phoneNumber,
-            }
-          })
+        snapshot.docs.map((doc) => {
+          const data = doc.data()
+          return {
+            id: doc.id,
+            firstName: data.firstName,
+            lastName: data.lastName,
+            nationality: data.nationality,
+            dateOfBirth: data.dateOfBirth,
+            gender: data.gender,
+            identification: data.identification,
+            email: data.email,
+            address: data.address,
+            phoneNumber: data.phoneNumber,
+          }
+        })
       )
     })
 

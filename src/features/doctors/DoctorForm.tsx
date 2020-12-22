@@ -11,14 +11,48 @@ import {Select} from '../../components/Select'
 export function DoctorForm() {
   const {close} = useModal()
   const [submitting, setSubmitting] = useState(false)
-  const {register, handleSubmit, reset, errors} = useForm<Doctor>()
+  const {register, handleSubmit, reset, errors, setError} = useForm<Doctor>()
   async function onSubmit(doctor: Doctor) {
+    const isValidEmail = await validateEmail(doctor.email)
+    if (!isValidEmail) {
+      setError('email', {
+        type: 'manual',
+        message: 'Ya hay un doctor registrado con este email',
+      })
+      return
+    }
+    const isValidID = await validateIdentification(doctor.identification)
+    if (!isValidID) {
+      setError('identification', {
+        type: 'manual',
+        message: 'Ya hay un doctor registrado con esta cedula',
+      })
+      return
+    }
     setSubmitting(true)
     await db.collection('doctors').add(doctor)
     setSubmitting(false)
     reset()
     close()
   }
+
+  async function validateEmail(email: string) {
+    const snapshot = await db
+      .collection('doctors')
+      .where('email', '==', `${email}`)
+      .get()
+    console.log(snapshot.size)
+    return snapshot.size === 0
+  }
+
+  async function validateIdentification(identification: string) {
+    const snapshot = await db
+      .collection('doctors')
+      .where('identification', '==', `${identification}`)
+      .get()
+    return snapshot.size === 0
+  }
+
   return (
     <form
       className="w-full mx-auto grid grid-cols-4"
@@ -98,7 +132,7 @@ export function DoctorForm() {
           ref={register({
             required: true,
             minLength: 1,
-            validate: (value) => Boolean(value.trim()),
+            validate: async (value) => Boolean(value.trim()),
           })}
           name="email"
           className={clsx(
@@ -109,7 +143,7 @@ export function DoctorForm() {
           type="email"
         />
       </label>
-      <label className="mt-1 block col-span-2 mt-2 ml-2">
+      <label className="mt-1 block col-span-2 mt-2 ml-2 mb-4">
         <span className="text-gray-700">Especialidad</span>
         <Select
           name="specialty"
@@ -123,7 +157,21 @@ export function DoctorForm() {
           ))}
         </Select>
       </label>
-      <Button className="mt-8 col-span-4" type="submit">
+      {errors.email?.message != null ? (
+        <span className="block col-span-4 flex justify-center text-red-500 bg-red-100 p-2 rounded-md">
+          {errors.email?.message}
+        </span>
+      ) : (
+        <></>
+      )}
+      {errors.identification?.message != null ? (
+        <span className="block col-span-4 flex justify-center text-red-500 bg-red-100 p-2 rounded-md">
+          {errors.identification?.message}
+        </span>
+      ) : (
+        <></>
+      )}
+      <Button className="col-span-4 mt-4" type="submit">
         {submitting ? (
           <svg className="animate-spin mr-3 h-5 w-5 text-white">
             <circle
