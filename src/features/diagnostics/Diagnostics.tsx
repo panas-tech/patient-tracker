@@ -57,27 +57,27 @@ export function Diagnostics() {
           </div>
         </div>
         <div className="w-full bg-white rounded-2xl p-4 shadow mt-4">
-            {diagnosticList.length === 0 ? (
-              <>No hay diagnosticos registrados en este momento</>
-            ) : (
-              <ul className="grid grid-flow-row sm:grid-cols-2 md:grid-cols-3 gap-8 py-8">
-                {diagnosticList.map((diagnostic) => (
-                  <li
-                    className="border bg-white rounded-xl shadow overflow-hidden"
-                    key={diagnostic.name}
-                    data-testid={diagnostic.name}
-                  >
-                    <div className="p-4 text-center">{diagnostic.name}</div>
-                    <div
-                      className={clsx(
-                        'w-full h-12',
-                        enumToColor(diagnostic.color)
-                      )}
-                    />
-                  </li>
-                ))}
-              </ul>
-            )}
+          {diagnosticList.length === 0 ? (
+            <>No hay diagnosticos registrados en este momento</>
+          ) : (
+            <ul className="grid grid-flow-row sm:grid-cols-2 md:grid-cols-3 gap-8 py-8">
+              {diagnosticList.map((diagnostic) => (
+                <li
+                  className="border bg-white rounded-xl shadow overflow-hidden"
+                  key={diagnostic.name}
+                  data-testid={diagnostic.name}
+                >
+                  <div className="p-4 text-center">{diagnostic.name}</div>
+                  <div
+                    className={clsx(
+                      'w-full h-12',
+                      enumToColor(diagnostic.color)
+                    )}
+                  />
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
       <Modal>
