@@ -86,7 +86,7 @@ export function AppNavigation() {
             </svg>
           </button>
         </div>
-        <div className="hidden sm:block h-full w-64">
+        <div className="hidden sm:block h-full w-56">
           <Sidebar />
         </div>
       </nav>
